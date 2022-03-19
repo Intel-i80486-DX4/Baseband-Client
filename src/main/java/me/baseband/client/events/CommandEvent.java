@@ -15,8 +15,10 @@ public class CommandEvent {
     public static String ChatSuffix = " »\u0299\u1d00\ua731\u1d07\u0299\u1d00\u0274\u1d05«";
     HudUtils hud = new HudUtils();
     SuffixUtil suffix = new SuffixUtil();
+    AutoTotemUtil Autototem = new AutoTotemUtil();
     boolean hudenabled = false;
-    boolean suffixenabled = false;
+    public boolean suffixenabled = false;
+    public boolean autototenabled = false;
 
 
     public static String getSuffix(){
@@ -31,6 +33,22 @@ public class CommandEvent {
             Command = JOptionPane.showInputDialog("Enter a command.");
                     if (Command.equals("exit")) {
                         mc.getMinecraft().shutdown();
+                    }
+                    if (Command.equals("toggleautototem")){
+                        autototenabled=!autototenabled;
+                        if (autototenabled){
+                            MinecraftForge.EVENT_BUS.register(Autototem);
+                            ChatUtils.SendMessage("AutoTotem Enabled.");
+                        }
+                        if (!autototenabled){
+                            MinecraftForge.EVENT_BUS.unregister(Autototem);
+                            ChatUtils.SendMessage("AutoTotem Disabled.");
+                        }
+
+                    }
+                    if (Command.equals("autototemsoft")){
+                        AutoTotemUtil.soft();
+                        ChatUtils.SendMessage("Soft Mode set to"+AutoTotemUtil.soft2());
                     }
                     if (Command.equals("togglesuffix")){
                         suffixenabled=!suffixenabled;
@@ -57,6 +75,8 @@ public class CommandEvent {
                                 " exit: Exits Minecraft.\n" +
                                 " togglehud: Toggles Hud.\n" +
                                 " togglesuffix: Toggles the ChatSuffix.\n" +
+                                " autototemtoggle: Toggles AutoTotem (Kami Pasted)\n" +
+                                " autototemsoft: Toggles AutoTotem @SOFT@ Option.\n" +
                                 " setprefix: Changes the Prefix. (Default is B?)\n" +
                                 " unload: Unloads the client.\n" +
                                 " default: Resets the client's options.\n" +
@@ -67,6 +87,8 @@ public class CommandEvent {
                     }
                     if (Command.equals("unload")){
                         ChatUtils.SendMessage("Unloading...");
+                        MinecraftForge.EVENT_BUS.unregister(hud);
+                        MinecraftForge.EVENT_BUS.unregister(suffix);
                         UnloadUtil.unload();
                         ChatUtils.SendMessage("Unloaded.");
                     }
