@@ -34,6 +34,7 @@ public class CommandEvent {
                     if (Command.equals("exit")) {
                         mc.getMinecraft().shutdown();
                     }
+                    /*
                     if (Command.equals("toggleautototem")){
                         autototenabled=!autototenabled;
                         if (autototenabled){
@@ -50,6 +51,7 @@ public class CommandEvent {
                         AutoTotemUtil.soft();
                         ChatUtils.SendMessage("Soft Mode set to "+AutoTotemUtil.soft2());
                     }
+                    */
                     if (Command.equals("togglesuffix")){
                         suffixenabled=!suffixenabled;
                         if (suffixenabled){
@@ -75,8 +77,6 @@ public class CommandEvent {
                                 " exit: Exits Minecraft.\n" +
                                 " togglehud: Toggles Hud.\n" +
                                 " togglesuffix: Toggles the ChatSuffix.\n" +
-                                " toggleautototem: Toggles AutoTotem (Kami Pasted)\n" +
-                                " autototemsoft: Toggles AutoTotem @SOFT@ Option.\n" +
                                 " setprefix: Changes the Prefix. (Default is B?)\n" +
                                 " unload: Unloads the client.\n" +
                                 " default: Resets the client's options.\n" +
