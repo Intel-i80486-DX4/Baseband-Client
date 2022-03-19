@@ -17,20 +17,22 @@ public class CommandEvent {
     @SubscribeEvent
     public void onCommand(ClientChatEvent event){
     if (event.getMessage().contains(CommandPrefix)){
-        ThreadManager.run(() -> {
-                    Command = JOptionPane.showInputDialog("Enter a command.");
-                    if (Command.equals("exit")) {
-                        mc.getMinecraft().shutdown();
-                    } else {
-                        if (Command.equals("help")) {
-                            ChatUtils.SendMessage("-Commands- \nexit: Exits Minecraft");
-                        } else {
-                            ChatUtils.SendMessage("Command Not Found.");
-                        }
-                    }
-                    Command = null;
-                });
+        ThreadManager.run(() ->{
+            Command = JOptionPane.showInputDialog("Enter a command.");
+                if (Command.equals("exit")) {
+                    mc.getMinecraft().shutdown();
+                } else {
+                if (Command.equals("help")) {
+                    ChatUtils.SendMessage("Commands \nexit: Exits Minecraft\n");
+                }if (Command.equals("prefix")){
+                    CommandPrefix = JOptionPane.showInputDialog("Enter a new prefix.");
+                } else {
+                    ChatUtils.SendMessage("Command Not Found.");
+                }
+            }
+            Command = null;
             event.setCanceled(true);
+        });
     }else {Command=null;}
     }
 }
