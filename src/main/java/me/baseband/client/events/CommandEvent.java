@@ -48,7 +48,7 @@ public class CommandEvent {
                     }
                     if (Command.equals("autototemsoft")){
                         AutoTotemUtil.soft();
-                        ChatUtils.SendMessage("Soft Mode set to"+AutoTotemUtil.soft2());
+                        ChatUtils.SendMessage("Soft Mode set to "+AutoTotemUtil.soft2());
                     }
                     if (Command.equals("togglesuffix")){
                         suffixenabled=!suffixenabled;
@@ -71,19 +71,19 @@ public class CommandEvent {
                     }
 
                     if (Command.equals("help")) {
-                        ChatUtils.SendMessage("Commands \n" +
+                        String help = "Commands \n" +
                                 " exit: Exits Minecraft.\n" +
                                 " togglehud: Toggles Hud.\n" +
                                 " togglesuffix: Toggles the ChatSuffix.\n" +
-                                " autototemtoggle: Toggles AutoTotem (Kami Pasted)\n" +
+                                " toggleautototem: Toggles AutoTotem (Kami Pasted)\n" +
                                 " autototemsoft: Toggles AutoTotem @SOFT@ Option.\n" +
                                 " setprefix: Changes the Prefix. (Default is B?)\n" +
                                 " unload: Unloads the client.\n" +
                                 " default: Resets the client's options.\n" +
                                 " setsuffix: Sets a new ChatSuffix.\n" +
-                                " To reload the client, after unloading-\n" +
-                                " Type B?load after unloading.\n" +
-                                " Note, All commands above are Caps-Sensitive.");
+                                " Note, All commands above are Caps-Sensitive.";
+                        ChatUtils.SendMessage(help);
+                        System.out.println(help);
                     }
                     if (Command.equals("unload")){
                         ChatUtils.SendMessage("Unloading...");

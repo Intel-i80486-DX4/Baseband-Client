@@ -17,9 +17,9 @@ public class Main {
     private static Logger logger;
     public static Minecraft mc;
 
+
     @EventHandler
-    public void preInit(FMLPreInitializationEvent event)
-    {
+    public void preInit(FMLPreInitializationEvent event) {
         logger = event.getModLog();
     }
 
