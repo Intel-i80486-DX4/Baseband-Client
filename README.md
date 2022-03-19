@@ -1,3 +1,3 @@
 # Baseband-Client
-first thing that i'm gonna make that isn't a paste
-:]
+External Command Based Utility Player Assistence Mod
+To open the external command input type "B?" into the ingame chat.
