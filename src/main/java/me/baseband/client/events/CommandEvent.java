@@ -104,6 +104,7 @@ public class CommandEvent {
                                 " togglesuffix: Toggles the ChatSuffix.\n" +
                                 " toggleaura: Toggles Killaura\n" +
                                 " togglechatcrypt: Toggles Chat Encryption.\n" +
+                                " togglechat: Toggles if normal chat is enabled with the above Encryption." +
                                 " setprefix: Changes the Prefix. (Default is B?)\n" +
                                 " unload: Unloads the client.\n" +
                                 " default: Resets the client's options.\n" +
@@ -121,6 +122,9 @@ public class CommandEvent {
                         if (!chatcrypt){
                             MinecraftForge.EVENT_BUS.unregister(chatcrypt2);
                         }
+                    }
+                    if (Command.equals("togglechat")){
+                        ChatUtils.ToggleNormalChat();
                     }
                     if (Command.equals("unload")){
                         ChatUtils.SendMessage("Unloading...");
