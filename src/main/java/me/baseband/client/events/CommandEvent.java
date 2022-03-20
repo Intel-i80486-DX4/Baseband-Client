@@ -1,6 +1,5 @@
 package me.baseband.client.events;
 
-import me.baseband.client.Main;
 import me.baseband.client.utils.ChatUtils;
 import me.baseband.client.utils.HudUtils;
 import me.baseband.client.utils.SuffixUtil;
@@ -119,9 +118,11 @@ public class CommandEvent {
                         chatcrypt = !chatcrypt;
                         if (chatcrypt){
                             MinecraftForge.EVENT_BUS.register(chatcrypt2);
+                            ChatUtils.SendMessage("ChatCrypt Enabled.");
                         }
                         if (!chatcrypt){
                             MinecraftForge.EVENT_BUS.unregister(chatcrypt2);
+                            ChatUtils.SendMessage("ChatCrypt Disabled.");
                         }
                     }
                     if (Command.equals("togglechat")){

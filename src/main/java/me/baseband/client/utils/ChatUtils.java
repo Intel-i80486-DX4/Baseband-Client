@@ -1,5 +1,6 @@
 package me.baseband.client.utils;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.client.event.ClientChatEvent;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
@@ -44,7 +45,7 @@ public class ChatUtils {
 
     @SubscribeEvent
     public void onCryptChatEvent(ClientChatEvent event){
-        String ChatCrypt = event.getMessage();
+        String ChatCrypt = "<"+Minecraft.getMinecraft().getSession().getUsername()+"> "+event.getMessage();
         String b64encoded = Base64.getEncoder().encodeToString(ChatCrypt.getBytes());
         String msg2 = new StringBuilder(b64encoded).reverse().toString();
         event.setMessage("?%B"+ msg2);
