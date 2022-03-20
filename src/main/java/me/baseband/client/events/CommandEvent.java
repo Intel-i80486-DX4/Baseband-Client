@@ -1,5 +1,6 @@
 package me.baseband.client.events;
 
+import me.baseband.client.Main;
 import me.baseband.client.utils.ChatUtils;
 import me.baseband.client.utils.HudUtils;
 import me.baseband.client.utils.SuffixUtil;

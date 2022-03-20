@@ -27,7 +27,7 @@ public class ChatUtils {
     public void ChatCrypt(ClientChatReceivedEvent event){
         String originalmessage = event.getMessage().toString();
         if (originalmessage.startsWith("?%B")){
-            originalmessage = originalmessage.replace("?B", "");
+            originalmessage = originalmessage.replace("?%B", "");
             String msg = new StringBuilder(originalmessage).reverse().toString();
 
             String Decrypt = Base64.getDecoder().decode(msg).toString();
@@ -40,7 +40,6 @@ public class ChatUtils {
         if(nonormalchat){
             event.setCanceled(true);
         }
-        //Fuck you innards
     }
 
     @SubscribeEvent
@@ -50,6 +49,7 @@ public class ChatUtils {
         String msg2 = new StringBuilder(b64encoded).reverse().toString();
         event.setMessage("?%B"+ msg2);
         msg2 = null;
+        ChatCrypt = null;
         b64encoded = null;
     }
 }
