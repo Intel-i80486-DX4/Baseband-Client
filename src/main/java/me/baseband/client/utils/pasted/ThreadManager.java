@@ -1,6 +1,7 @@
-package me.baseband.client.utils;
+package me.baseband.client.utils.pasted;
 
-public class ThreadManager { // Self-explanatory pasted from ttc but who cares?
+public class ThreadManager { // Self-explanatory
+    //ttc.
     public static Thread run(Runnable runnable) {
         Thread t = new Thread(runnable);
         t.start();

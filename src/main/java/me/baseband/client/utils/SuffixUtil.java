@@ -6,11 +6,13 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class SuffixUtil {
     String OriginalMsg = null;
-    boolean preventloops=true;
+    boolean blockoncommands = false;
+
+    public void block(){blockoncommands=!blockoncommands;}
 
     @SubscribeEvent
     public void onCommand(ClientChatEvent event){
-        if ((event.getMessage().startsWith(".")||event.getMessage().startsWith(",")||event.getMessage().startsWith("B?")||event.getMessage().startsWith("*"))||event.getMessage().startsWith("/")){return;}
+        if (blockoncommands){if ((event.getMessage().startsWith(".")||event.getMessage().startsWith(",")||event.getMessage().startsWith("B?")||event.getMessage().startsWith("*"))||event.getMessage().startsWith("/")){return;}}
         OriginalMsg =event.getMessage();
         event.setMessage(OriginalMsg+CommandEvent.getSuffix());
     }

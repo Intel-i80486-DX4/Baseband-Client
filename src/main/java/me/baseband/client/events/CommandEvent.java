@@ -1,6 +1,9 @@
 package me.baseband.client.events;
 
 import me.baseband.client.utils.*;
+import me.baseband.client.utils.pasted.AuraUtils;
+import me.baseband.client.utils.pasted.AutoTotemUtil;
+import me.baseband.client.utils.pasted.ThreadManager;
 import net.minecraftforge.client.event.ClientChatEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -16,9 +19,11 @@ public class CommandEvent {
     HudUtils hud = new HudUtils();
     SuffixUtil suffix = new SuffixUtil();
     AutoTotemUtil Autototem = new AutoTotemUtil();
+    AuraUtils killaura = new AuraUtils();
     boolean hudenabled = false;
     public boolean suffixenabled = false;
     public boolean autototenabled = false;
+    public boolean aura = false;
 
 
     public static String getSuffix(){
@@ -34,6 +39,21 @@ public class CommandEvent {
                     if (Command.equals("exit")) {
                         mc.getMinecraft().shutdown();
                     }
+                    if (Command.equals("toggleaura")){
+                        aura=!aura;
+                        if(aura){
+                            MinecraftForge.EVENT_BUS.register(killaura);
+                            ChatUtils.SendMessage("Killaura Enabled.");
+                        }
+                        if(!aura){
+                            MinecraftForge.EVENT_BUS.unregister(killaura);
+                            ChatUtils.SendMessage("Killaura Disabled.");
+                        }
+                    }
+                    if (Command.equals("setaura")){
+                        AuraUtils.config();
+                    }
+
                     /*
                     if (Command.equals("toggleautototem")){
                         autototenabled=!autototenabled;
@@ -77,10 +97,12 @@ public class CommandEvent {
                                 " exit: Exits Minecraft.\n" +
                                 " togglehud: Toggles Hud.\n" +
                                 " togglesuffix: Toggles the ChatSuffix.\n" +
+                                " toggleaura: Toggles Killaura\n" +
                                 " setprefix: Changes the Prefix. (Default is B?)\n" +
                                 " unload: Unloads the client.\n" +
                                 " default: Resets the client's options.\n" +
                                 " setsuffix: Sets a new ChatSuffix.\n" +
+                                " setaura: Opens a Configuration Window for Killaura.\n" +
                                 " Note, All commands above are Caps-Sensitive.";
                         ChatUtils.SendMessage(help);
                         System.out.println(help);

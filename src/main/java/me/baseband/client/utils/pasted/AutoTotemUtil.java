@@ -1,4 +1,4 @@
-package me.baseband.client.utils;
+package me.baseband.client.utils.pasted;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.init.Items;
@@ -10,6 +10,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import static me.baseband.client.Main.mc;
 
 public class AutoTotemUtil {
+    //kami, doesn't work though.
 
 
 
