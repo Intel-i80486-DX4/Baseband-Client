@@ -6,7 +6,7 @@ import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumHand;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.TickEvent;
+import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 
 import javax.swing.*;
 import java.util.List;
@@ -47,7 +47,7 @@ public class AuraUtils {
 
 
     @SubscribeEvent
-    public void onUpdate(TickEvent.ClientTickEvent event) {
+    public void onUpdate(PlayerEvent event) {
         try {
             delay++;
             int reqDelay = (int) Math.round(50 / CPS);
