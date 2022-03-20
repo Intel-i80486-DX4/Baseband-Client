@@ -1,6 +1,9 @@
 package me.baseband.client.events;
 
-import me.baseband.client.utils.*;
+import me.baseband.client.utils.ChatUtils;
+import me.baseband.client.utils.HudUtils;
+import me.baseband.client.utils.SuffixUtil;
+import me.baseband.client.utils.UnloadUtil;
 import me.baseband.client.utils.pasted.AuraUtils;
 import me.baseband.client.utils.pasted.AutoTotemUtil;
 import me.baseband.client.utils.pasted.ThreadManager;
@@ -19,11 +22,13 @@ public class CommandEvent {
     HudUtils hud = new HudUtils();
     SuffixUtil suffix = new SuffixUtil();
     AutoTotemUtil Autototem = new AutoTotemUtil();
+    ChatUtils chatcrypt2 = new ChatUtils();
     AuraUtils killaura = new AuraUtils();
     boolean hudenabled = false;
     public boolean suffixenabled = false;
     public boolean autototenabled = false;
     public boolean aura = false;
+    public boolean chatcrypt = false;
 
 
     public static String getSuffix(){
@@ -98,6 +103,7 @@ public class CommandEvent {
                                 " togglehud: Toggles Hud.\n" +
                                 " togglesuffix: Toggles the ChatSuffix.\n" +
                                 " toggleaura: Toggles Killaura\n" +
+                                " togglechatcrypt: Toggles Chat Encryption.\n" +
                                 " setprefix: Changes the Prefix. (Default is B?)\n" +
                                 " unload: Unloads the client.\n" +
                                 " default: Resets the client's options.\n" +
@@ -106,6 +112,15 @@ public class CommandEvent {
                                 " Note, All commands above are Caps-Sensitive.";
                         ChatUtils.SendMessage(help);
                         System.out.println(help);
+                    }
+                    if (Command.equals("togglechatcrypt")){
+                        chatcrypt = !chatcrypt;
+                        if (chatcrypt){
+                            MinecraftForge.EVENT_BUS.register(chatcrypt2);
+                        }
+                        if (!chatcrypt){
+                            MinecraftForge.EVENT_BUS.unregister(chatcrypt2);
+                        }
                     }
                     if (Command.equals("unload")){
                         ChatUtils.SendMessage("Unloading...");

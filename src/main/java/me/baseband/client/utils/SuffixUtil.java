@@ -13,7 +13,8 @@ public class SuffixUtil {
     @SubscribeEvent
     public void onCommand(ClientChatEvent event){
         if (blockoncommands){if ((event.getMessage().startsWith(".")||event.getMessage().startsWith(",")||event.getMessage().startsWith("B?")||event.getMessage().startsWith("*"))||event.getMessage().startsWith("/")){return;}}
+
         OriginalMsg =event.getMessage();
-        event.setMessage(OriginalMsg+CommandEvent.getSuffix());
+        if (!event.getMessage().startsWith("?%B")){event.setMessage(OriginalMsg+CommandEvent.getSuffix());}
     }
 }
