@@ -17,7 +17,7 @@ import static me.baseband.client.Main.mc;
 
 
 public class AuraUtils {
- //Also gishcode.
+ //Also gishcode. Doesn't work.
     static boolean players = false;
     static boolean hostileMobs = false;
     static boolean passiveMobs = false;
