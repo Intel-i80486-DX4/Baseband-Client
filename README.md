@@ -1,4 +1,6 @@
-# Baseband-Client
+# BASE(D)BAND
+
+
 External Command Based Utility Player Assistance Mod
 
 
@@ -14,16 +16,7 @@ TudbuT: "Tolerable, Considering that it's Your first ever custom base client."
 
 
 
- ____    __    ___  ____  ____    __    _  _  ____  
-(  _ \  /__\  / __)( ___)(  _ \  /__\  ( \( )(  _ \ 
- ) _ < /(__)\ \__ \ )__)  ) _ < /(__)\  )  (  )(_) )
-(____/(__)(__)(___/(____)(____/(__)(__)(_)\_)(____/ 
-
-
-  ___  __    ____  ____  _  _  ____ 
- / __)(  )  (_  _)( ___)( \( )(_  _)
-( (__  )(__  _)(_  )__)  )  (   )(  
- \___)(____)(____)(____)(_)\_) (__)     
+  
 
   
                 
