@@ -8,7 +8,6 @@ import me.baseband.client.utils.pasted.AuraUtils;
 import me.baseband.client.utils.pasted.AutoTotemUtil;
 import me.baseband.client.utils.pasted.ThreadManager;
 import net.minecraftforge.client.event.ClientChatEvent;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import javax.swing.*;
@@ -16,12 +15,12 @@ import javax.swing.*;
 import static me.baseband.client.Main.mc;
 
 public class CommandEvent {
-    public String Command = null;
-    public String CommandPrefix = "B?";
-    public static String ChatSuffix = " »\u0299\u1d00\ua731\u1d07\u0299\u1d00\u0274\u1d05«";
+    public String command = null;
+    public String commandprefix = "B?";
+    public static String chatsuffix = " »\u0299\u1d00\ua731\u1d07\u0299\u1d00\u0274\u1d05«";
     HudUtils hud = new HudUtils();
     SuffixUtil suffix = new SuffixUtil();
-    AutoTotemUtil Autototem = new AutoTotemUtil();
+    AutoTotemUtil autototem = new AutoTotemUtil();
     ChatUtils chatcrypt2 = new ChatUtils();
     AuraUtils killaura = new AuraUtils();
     boolean hudenabled = false;
@@ -32,30 +31,22 @@ public class CommandEvent {
 
 
     public static String getSuffix(){
-        return ChatSuffix;
+        return chatsuffix;
     }
 
 
     @SubscribeEvent
     public void onCommand(ClientChatEvent event){
-    if (event.getMessage().contains(CommandPrefix)){
+    if (event.getMessage().contains(commandprefix)){
         ThreadManager.run(() ->{
-            Command = JOptionPane.showInputDialog("Enter a command.");
-                    if (Command.equals("exit")) {
+            command = JOptionPane.showInputDialog("Enter a command.");
+                    if (command.equals("exit")) {
                         mc.getMinecraft().shutdown();
                     }
-                    if (Command.equals("toggleaura")){
-                        aura=!aura;
-                        if(aura){
-                            MinecraftForge.EVENT_BUS.register(killaura);
-                            ChatUtils.SendMessage("Killaura Enabled.");
-                        }
-                        if(!aura){
-                            MinecraftForge.EVENT_BUS.unregister(killaura);
-                            ChatUtils.SendMessage("Killaura Disabled.");
-                        }
+                    if (command.equals("toggleaura")){
+                        AuraUtils.toggle();
                     }
-                    if (Command.equals("setaura")){
+                    if (command.equals("setaura")){
                         AuraUtils.config();
                     }
 
@@ -77,27 +68,19 @@ public class CommandEvent {
                         ChatUtils.SendMessage("Soft Mode set to "+AutoTotemUtil.soft2());
                     }
                     */
-                    if (Command.equals("togglesuffix")){
-                        suffixenabled=!suffixenabled;
-                        if (suffixenabled){
-                            MinecraftForge.EVENT_BUS.register(suffix);
-                            ChatUtils.SendMessage("ChatSuffix Enabled.");
-                        }
-                        if (!suffixenabled){
-                            MinecraftForge.EVENT_BUS.unregister(suffix);
-                            ChatUtils.SendMessage("ChatSuffix Disabled.");
-                        }
+                    if (command.equals("togglesuffix")){
+                        SuffixUtil.toggle();
                     }
-                    if (Command.equals("setsuffix")){
-                        ChatSuffix = JOptionPane.showInputDialog("Enter new ChatSuffix");
+                    if (command.equals("setsuffix")){
+                        chatsuffix = JOptionPane.showInputDialog("Enter new ChatSuffix");
                     }
-                    if (Command.equals("default")){
-                        ChatSuffix=" »\u0299\u1d00\ua731\u1d07\u0299\u1d00\u0274\u1d05«";
-                        CommandPrefix="B?";
+                    if (command.equals("default")){
+                        chatsuffix =" »\u0299\u1d00\ua731\u1d07\u0299\u1d00\u0274\u1d05«";
+                        commandprefix ="B?";
                         ChatUtils.SendMessage("Set all Settings to Default!");
                     }
 
-                    if (Command.equals("help")) {
+                    if (command.equals("help")) {
                         String help = "Commands \n" +
                                 " exit: Exits Minecraft.\n" +
                                 " togglehud: Toggles Hud.\n" +
@@ -114,48 +97,30 @@ public class CommandEvent {
                         ChatUtils.SendMessage(help);
                         System.out.println(help);
                     }
-                    if (Command.equals("togglechatcrypt")){
-                        chatcrypt = !chatcrypt;
-                        if (chatcrypt){
-                            MinecraftForge.EVENT_BUS.register(chatcrypt2);
-                            ChatUtils.SendMessage("ChatCrypt Enabled.");
-                        }
-                        if (!chatcrypt){
-                            MinecraftForge.EVENT_BUS.unregister(chatcrypt2);
-                            ChatUtils.SendMessage("ChatCrypt Disabled.");
-                        }
+                    if (command.equals("togglechatcrypt")){
+                        ChatUtils.toggle();
                     }
-                    if (Command.equals("togglechat")){
+                    if (command.equals("togglechat")){
                         ChatUtils.ToggleNormalChat();
                     }
-                    if (Command.equals("unload")){
-                        ChatUtils.SendMessage("Unloading...");
-                        MinecraftForge.EVENT_BUS.unregister(hud);
-                        MinecraftForge.EVENT_BUS.unregister(suffix);
+                    if (command.equals("unload")){
                         UnloadUtil.unload();
                         ChatUtils.SendMessage("Unloaded.");
                     }
-                    if (Command.equals("setprefix")) {
+                    if (command.equals("setprefix")) {
                         ChatUtils.SendMessage("Changing Prefix...");
-                        CommandPrefix = JOptionPane.showInputDialog("Enter a new prefix.");
+                        commandprefix = JOptionPane.showInputDialog("Enter a new prefix.");
                         ChatUtils.SendMessage("");
                     }
-                    if (Command.equals("togglehud")){
-                            hudenabled = !hudenabled;
-                        if (hudenabled){
-                            MinecraftForge.EVENT_BUS.register(hud);
-                            ChatUtils.SendMessage("Hud Enabled.");
-                        }
-                        if (!hudenabled){
-                            MinecraftForge.EVENT_BUS.unregister(hud);
-                            ChatUtils.SendMessage("Hud Disabled.");
-                        }
+                    if (command.equals("togglehud")){
+                            HudUtils.toggle();
                     }
-                    if (Command.isEmpty()){}
+                    if (command.isEmpty()){}
 
         });
-        Command = null;
+        command = null;
         event.setCanceled(true);
-    }else {Command=null;}
+    }else {
+        command =null;}
     }
 }

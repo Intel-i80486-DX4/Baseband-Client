@@ -7,14 +7,27 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class SuffixUtil {
     String OriginalMsg = null;
     boolean blockoncommands = false;
+    static boolean enabled = false;
 
     public void block(){blockoncommands=!blockoncommands;}
 
+    public static void toggle(){
+        enabled=!enabled;
+        ChatUtils.SendMessage("ChatSuffix set to "+enabled);
+    }
+
     @SubscribeEvent
     public void onCommand(ClientChatEvent event){
-        if (blockoncommands){if ((event.getMessage().startsWith(".")||event.getMessage().startsWith(",")||event.getMessage().startsWith("B?")||event.getMessage().startsWith("*"))||event.getMessage().startsWith("/")){return;}}
+        if (enabled) {
+            if (blockoncommands) {
+                if ((event.getMessage().startsWith(".") || event.getMessage().startsWith(",") || event.getMessage().startsWith("B?") || event.getMessage().startsWith("*")) || event.getMessage().startsWith("/")) {
+                    return;
+                }
+            }
 
-        OriginalMsg =event.getMessage();
-        if (!event.getMessage().startsWith("?%B")){event.setMessage(OriginalMsg+CommandEvent.getSuffix());}
+            OriginalMsg = event.getMessage();
+            event.setMessage(OriginalMsg + CommandEvent.getSuffix());
+
+        }
     }
 }

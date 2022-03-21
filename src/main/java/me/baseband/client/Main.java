@@ -12,7 +12,7 @@ import org.apache.logging.log4j.Logger;
 public class Main {
     public static final String MODID = "baseband";
     public static final String NAME = "Baseband";
-    public static final String VERSION = "0.8";
+    public static final String VERSION = "0.9";
 
     private static Logger logger;
     public static Minecraft mc;
@@ -26,7 +26,12 @@ public class Main {
     @EventHandler
     public void init(FMLInitializationEvent event) {
         //Events time...
-        logger.info("Init.");
+        logger.info("\n______                   ______                    _ \n" +
+                    "| ___ \\                  | ___ \\                  | |\n" +
+                    "| |_/ /  __ _  ___   ___ | |_/ /  __ _  _ __    __| |\n" +
+                    "| ___ \\ / _` |/ __| / _ \\| ___ \\ / _` || '_ \\  / _` |\n" +
+                    "| |_/ /| (_| |\\__ \\|  __/| |_/ /| (_| || | | || (_| |\n" +
+                    "\\____/  \\__,_||___/ \\___|\\____/  \\__,_||_| |_| \\__,_|");
         UnloadUtil.load();
         logger.info("Baseband Loaded...");
     }

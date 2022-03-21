@@ -15,42 +15,53 @@ public class ChatUtils {
         mc.getMinecraft().ingameGUI.getChatGUI().printChatMessage(new TextComponentString("§3~B:§r "+input));
     }
     static boolean nonormalchat = false;
+    static boolean enabled = false;
 
 
     public static void ToggleNormalChat(){
         nonormalchat=!nonormalchat;
         SendMessage("Normal Chat set to "+nonormalchat);
     }
+
+    public static void toggle(){
+        enabled=!enabled;
+        ChatUtils.SendMessage("ChatCrypt set to "+enabled);
+    }
+
     //We're done here.
     //You're not allowed to copy this code.
 
     @SubscribeEvent
     public void ChatCrypt(ClientChatReceivedEvent event){
-        String originalmessage = event.getMessage().toString();
-        if (originalmessage.startsWith("?%B")){
-            originalmessage = originalmessage.replace("?%B", "");
-            String msg = new StringBuilder(originalmessage).reverse().toString();
+        if (enabled) {
+            String originalmessage = event.getMessage().toString();
+            if (originalmessage.contains("?%BBCRYPT")) {
+                originalmessage = originalmessage.replace("?%BBCRYPT", "");
+                String msg = new StringBuilder(originalmessage).reverse().toString();
 
-            String Decrypt = Base64.getDecoder().decode(msg).toString();
-            ChatUtils.SendMessage(""+Decrypt);
-            originalmessage = null;
-            msg = null;
-            Decrypt = null;
-         event.setCanceled(true);
-        }
-        if(nonormalchat){
-            event.setCanceled(true);
+                String decrypt = Base64.getDecoder().decode(msg).toString();
+                ChatUtils.SendMessage(decrypt);
+                originalmessage = null;
+                msg = null;
+                decrypt = null;
+                event.setCanceled(true);
+            }
+            if (nonormalchat) {
+                event.setCanceled(true);
+            }
         }
     }
 
     @SubscribeEvent
     public void onCryptChatEvent(ClientChatEvent event){
-        String ChatCrypt = "<"+Minecraft.getMinecraft().getSession().getUsername()+"> "+event.getMessage();
-        String b64encoded = Base64.getEncoder().encodeToString(ChatCrypt.getBytes());
-        String msg2 = new StringBuilder(b64encoded).reverse().toString();
-        event.setMessage("?%B"+ msg2);
-        msg2 = null;
-        ChatCrypt = null;
-        b64encoded = null;
+        if (enabled) {
+            String chatcrypt = Minecraft.getMinecraft().getSession().getUsername() + " " + event.getMessage();
+            String b64encoded = Base64.getEncoder().encodeToString(chatcrypt.getBytes());
+            String msg2 = new StringBuilder(b64encoded).reverse().toString();
+            event.setMessage("?%BBCRYPT" + msg2);
+            msg2 = null;
+            chatcrypt = null;
+            b64encoded = null;
+        }
     }
 }

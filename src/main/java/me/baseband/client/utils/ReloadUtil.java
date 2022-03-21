@@ -6,7 +6,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class ReloadUtil {
     @SubscribeEvent
     public void reload(ClientChatEvent event){
-        if(event.getMessage().contains("B?load")){
+        if(event.getMessage().contains("B!")){
             UnloadUtil.load();
         }
     }
