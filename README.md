@@ -6,6 +6,12 @@ External Command Based Utility Player Assistance Mod
 
 To open the external command input type "B?" into the ingame chat.
 
+
+Modules live in the utils folder, soon to be (never ever) fixed.
+
+
+Wow, This is worthless!
+
 Ratings
 
 SoberShulker: "Chinese out of 10. (Chinese/10)"
