@@ -93,8 +93,7 @@ jar {
         attributes(
                 'FMLCorePluginContainsFMLMod': 'false',
                 'FMLCorePlugin': 'me.baseband.client.Core',
-                'ForceLoadAsMod': 'true',
-                'FMLAT': 'baseband_at.cfg'
+                'ForceLoadAsMod': 'false'
         )
     }
 }
