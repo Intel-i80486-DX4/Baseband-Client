@@ -7,7 +7,9 @@ External Command Based Utility Player Assistance Mod
 To open the external command input type "B?" into the ingame chat.
 
 
-Modules live in the utils folder, soon to be (never ever) fixed.
+Modules live in the utils folder, soon to be (never ever) fixed. (FIXED!)
+
+Has a ModuleManager, Useless though.
 
 
 Wow, This is worthless!
