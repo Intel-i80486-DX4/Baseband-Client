@@ -17,13 +17,18 @@ public class CommandManager {
         if (event.getMessage().contains(Misc.getCommandSuffix())) {
             ThreadManager.run(() -> {
                 command = JOptionPane.showInputDialog("Enter a command.");
-                if (command.equalsIgnoreCase("listmodules")) {
-
+                /*
+                How to add a command.
+                if(command.equalsIgnoreCase("CommandHere"){
+                DOTHIS.Stuff()
                 }
+                */
                 if (command.equalsIgnoreCase("togglemod")){
                     String moduletoenable = JOptionPane.showInputDialog("Enter module to toggle.");
-                    ModuleManager.Sustenance(1, true, "Watermark");
+                    if (moduletoenable.equalsIgnoreCase("watermark")){
+                        ModuleManager.Sustenance(1, true, "Watermark");}
                 }
+
                 if (command.equalsIgnoreCase("listmodules")){
                     ModuleManager.listmodules();
                 }
