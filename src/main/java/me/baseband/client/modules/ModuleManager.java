@@ -83,7 +83,7 @@ public class ModuleManager {
 
     public static void Sustenance(int w, boolean d, String f){
         //Needlessly complicated, I'll forget what this does and how it works tomorrow.
-        ChatUtils.SendMessage("Toggling module"+modules.get(w));
+        ChatUtils.SendMessage("Toggling module "+modules.get(w));
         enabled.set(w, d);
         if(d){// If boolean true.
 

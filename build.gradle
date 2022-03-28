@@ -91,7 +91,7 @@ dependencies {
 jar {
     manifest {
         attributes(
-                'FMLCorePluginContainsFMLMod': 'true',
+                'FMLCorePluginContainsFMLMod': 'false',
                 'FMLCorePlugin': 'me.baseband.client.Core',
                 'ForceLoadAsMod': 'true',
                 'FMLAT': 'baseband_at.cfg'
