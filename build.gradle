@@ -92,7 +92,6 @@ jar {
     manifest {
         attributes(
                 'FMLCorePluginContainsFMLMod': 'false',
-                'FMLCorePlugin': 'me.baseband.client.Core',
                 'ForceLoadAsMod': 'false'
         )
     }
