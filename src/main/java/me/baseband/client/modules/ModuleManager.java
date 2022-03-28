@@ -12,7 +12,7 @@ public class ModuleManager {
 
     static ArrayList<String> modules = new ArrayList<String>();
     static ArrayList<Boolean> enabled = new ArrayList<Boolean>();
-    private int amountsofmodules = 0;
+    private static int amountsofmodules = 0;
 
     //Prepare for eye burning...
     public static boolean watermarkenabled=false;
@@ -22,7 +22,7 @@ public class ModuleManager {
 
 
 
-    public void AddEvents(){
+    public static void AddEvents(){
 
         /*
         Proper Module Declaration as follows.

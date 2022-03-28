@@ -1,5 +1,6 @@
 package me.baseband.client;
 
+import me.baseband.client.modules.ModuleManager;
 import me.baseband.client.utils.LogUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.fml.common.Mod;
@@ -28,11 +29,14 @@ public class Main {
         //Events time...
         LogUtil.ConsoleString("Loading Baseband...");
         //Stupid.
+        LogUtil.ConsoleString("Registering Events.");
         try{
             Register.LoadAll();
         }catch(Exception e){
             LogUtil.ConsoleError("Something Broke...");
         }
+        LogUtil.ConsoleString("Setting up ModuleManager");
+        ModuleManager.AddEvents();
 
         LogUtil.ConsoleString("Baseband Loaded...");
     }
