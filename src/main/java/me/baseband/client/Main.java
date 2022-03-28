@@ -1,6 +1,6 @@
 package me.baseband.client;
 
-import me.baseband.client.utils.UnloadUtil;
+import me.baseband.client.utils.LogUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -26,14 +26,15 @@ public class Main {
     @EventHandler
     public void init(FMLInitializationEvent event) {
         //Events time...
-        logger.info("\n______                   ______                    _ \n" +
-                    "| ___ \\                  | ___ \\                  | |\n" +
-                    "| |_/ /  __ _  ___   ___ | |_/ /  __ _  _ __    __| |\n" +
-                    "| ___ \\ / _` |/ __| / _ \\| ___ \\ / _` || '_ \\  / _` |\n" +
-                    "| |_/ /| (_| |\\__ \\|  __/| |_/ /| (_| || | | || (_| |\n" +
-                    "\\____/  \\__,_||___/ \\___|\\____/  \\__,_||_| |_| \\__,_|");
-        UnloadUtil.load();
-        logger.info("Baseband Loaded...");
+        LogUtil.ConsoleString("Loading Baseband...");
+        //Stupid.
+        try{
+            Register.LoadAll();
+        }catch(Exception e){
+            LogUtil.ConsoleError("Something Broke...");
+        }
+
+        LogUtil.ConsoleString("Baseband Loaded...");
     }
 
 }
