@@ -89,6 +89,7 @@ public class ModuleManager {
 
             if(f=="Watermark"){ //if String == ModuleName
                 watermarkenabled=d;
+                ChatUtils.SendMessage("Enabled module "+modules.get(w));
             }
 
         }
@@ -96,6 +97,7 @@ public class ModuleManager {
 
             if(f=="Watermark"){ //if String == ModuleName
                 watermarkenabled=d;
+                ChatUtils.SendMessage("Disabled module "+modules.get(w));
             }
 
         }

@@ -1,6 +1,7 @@
 package me.baseband.client.commands;
 
 import me.baseband.client.modules.ModuleManager;
+import me.baseband.client.utils.ChatUtils;
 import me.baseband.client.utils.Misc;
 import me.baseband.client.utils.ThreadManager;
 import net.minecraftforge.client.event.ClientChatEvent;
@@ -38,6 +39,14 @@ public class CommandManager {
 
                 if (command.equalsIgnoreCase("listmodules")){
                     ModuleManager.listmodules();
+                }
+                if (command.equalsIgnoreCase("help")){
+                    ChatUtils.SendMessage("Commands:"+
+                            "\n"+
+                            "EnableMod: Enables a Module\n" +
+                            "DisableMod: Disables a Module\n" +
+                            "ListModules: List All Modules\n" +
+                            "Help: Shows this messages.\n");
                 }
             });
             event.setCanceled(true);
