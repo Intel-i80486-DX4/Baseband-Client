@@ -34,17 +34,19 @@ public class ModuleManager {
         ^ needed, or stuff breaks fast.
         IN THAT ORDER!
          */
-        //Watermark... Module 1 for reference.
+        //Needed i think because of my sucky arraylist handling.
+        modules.add("DummyModule");
+        enabled.add(false);
+        amountsofmodules++;
+
+
+        //Watermark... Module 2 for reference.
         modules.add("Watermark");
         enabled.add(false);
         amountsofmodules++;
         //This is stupid, beyond comprehension.
 
 
-        //Needed i think because of my sucky arraylist handling.
-        modules.add("DummyModule");
-        enabled.add(false);
-        amountsofmodules++;
     }
 
 
@@ -73,6 +75,11 @@ public class ModuleManager {
         }
         return null;
     }
+
+    public static int Get(String e){
+        return modules.indexOf(e);
+    }
+
 
     public static void Sustenance(int w, boolean d, String f){
         //Needlessly complicated, I'll forget what this does and how it works tomorrow.

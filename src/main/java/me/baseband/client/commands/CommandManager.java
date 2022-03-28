@@ -26,7 +26,7 @@ public class CommandManager {
                 if (command.equalsIgnoreCase("togglemod")){
                     String moduletoenable = JOptionPane.showInputDialog("Enter module to toggle.");
                     if (moduletoenable.equalsIgnoreCase("watermark")){
-                        ModuleManager.Sustenance(1, true, "Watermark");}
+                        ModuleManager.Sustenance(ModuleManager.Get("Watermark"), true, "Watermark");}
                 }
 
                 if (command.equalsIgnoreCase("listmodules")){
