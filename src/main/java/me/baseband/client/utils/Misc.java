@@ -2,7 +2,7 @@ package me.baseband.client.utils;
 
 public class Misc {
     static String Name = "BaseBand";
-    static String Build = "B7";
+    static String Build = "B8";
     static String commandprefix = "B?";
 
     public static String ClientName(){

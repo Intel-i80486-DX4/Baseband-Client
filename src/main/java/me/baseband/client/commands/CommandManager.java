@@ -9,6 +9,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import javax.swing.*;
 
+import static java.lang.Integer.parseInt;
+
 public class CommandManager {
 
     public String command = null;
@@ -47,6 +49,9 @@ public class CommandManager {
                             "DisableMod: Disables a Module\n" +
                             "ListModules: List All Modules\n" +
                             "Help: Shows this messages.\n");
+                }
+                if (command.equalsIgnoreCase("enabled")){
+                    ModuleManager.ModuleNamePlusEnabled(parseInt(JOptionPane.showInputDialog("Enter Module Number.")));
                 }
             });
             event.setCanceled(true);

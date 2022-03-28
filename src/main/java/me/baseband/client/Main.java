@@ -29,13 +29,7 @@ public class Main {
         //Events time...
         LogUtil.ConsoleString("Loading Baseband...");
         //Stupid.
-        LogUtil.ConsoleString("Registering Events.");
-        try{
-            Register.LoadAll();
-        }catch(Exception e){
-            LogUtil.ConsoleError("Something Broke...");
-        }
-        LogUtil.ConsoleString("Setting up ModuleManager");
+        Register.LoadAll();
         ModuleManager.AddEvents();
 
         LogUtil.ConsoleString("Baseband Loaded...");

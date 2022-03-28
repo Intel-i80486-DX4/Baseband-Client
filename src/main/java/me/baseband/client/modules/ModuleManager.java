@@ -68,7 +68,7 @@ public class ModuleManager {
         }
     }
 
-    public String ModuleNamePlusEnabled(int integer){
+    public static String ModuleNamePlusEnabled(int integer){
         int counted = 0;
         while(counted<=amountsofmodules) {
             return modules.get(integer) + "-" + enabled.get(integer).toString();
