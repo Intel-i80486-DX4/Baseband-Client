@@ -92,6 +92,13 @@ public class ModuleManager {
             }
 
         }
+        if(!d){// If boolean true.
+
+            if(f=="Watermark"){ //if String == ModuleName
+                watermarkenabled=d;
+            }
+
+        }
     }
 
 
