@@ -23,11 +23,18 @@ public class CommandManager {
                 DOTHIS.Stuff()
                 }
                 */
-                if (command.equalsIgnoreCase("togglemod")){
-                    String moduletoenable = JOptionPane.showInputDialog("Enter module to toggle.");
+                if (command.equalsIgnoreCase("enablemod")){
+                    String moduletoenable = JOptionPane.showInputDialog("Enter module to enable.");
                     if (moduletoenable.equalsIgnoreCase("watermark")){
                         ModuleManager.Sustenance(ModuleManager.Get("Watermark"), true, "Watermark");}
                 }
+
+                if (command.equalsIgnoreCase("disablemod")){
+                    String moduletoenable = JOptionPane.showInputDialog("Enter module to disable.");
+                    if (moduletoenable.equalsIgnoreCase("watermark")){
+                        ModuleManager.Sustenance(ModuleManager.Get("Watermark"), false, "Watermark");}
+                }
+
 
                 if (command.equalsIgnoreCase("listmodules")){
                     ModuleManager.listmodules();

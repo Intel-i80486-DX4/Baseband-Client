@@ -1,6 +1,8 @@
 package me.baseband.client;
 
-public class Core {
+import net.minecraftforge.fml.relauncher.FMLCorePlugin;
+
+public class Core extends FMLCorePlugin {
     public Core(){
         System.out.println("BaseBand Core. (Useless)");
     }

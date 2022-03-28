@@ -87,7 +87,7 @@ public class ModuleManager {
         enabled.set(w, d);
         if(d){// If boolean true.
 
-            if(f=="WaterMark"){ //if String == ModuleName
+            if(f=="Watermark"){ //if String == ModuleName
                 watermarkenabled=d;
             }
 
